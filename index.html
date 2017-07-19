@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<!-- BASE_URL = 139.59.59.105:8080 -->
+<head>
+    <title>Chat Application</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+<form  >
+Username<input type="text" id="uname">
+<br><br>
+<br><br>
+<input type="button" onclick="validate()" value="submit">
+</form>
+<script>
+
+
+function validate()
+{
+var name=document.getElementById("uname").value;
+$.get('http://139.59.59.105:8080/savename/' + name, function(res) {
+      localStorage.setItem("API_KEY",res.apiKey);
+      localStorage.setItem("SESSION_ID",res.sessionId);
+      localStorage.setItem("TOKEN", res.token);
+      localStorage.setItem("NAME", name);
+
+      window.location.replace("index2.html");
+    });
+
+
+}
+</script>
+</body>
+
+</html>
